@@ -44,7 +44,7 @@ selectEventos(select,
       },
       e => {
         muestraError(e);
-        selectProductos(
+        selectEventos(
           select, valor);
       }
     );

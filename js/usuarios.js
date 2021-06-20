@@ -11,16 +11,16 @@ import {
   muestraUsuarios
 } from "./navegacion.js";
 
-const SIN_PRODUCTOS = /* html */
+const SIN_EVENTOS = /* html */
   `<option value="">
-    -- Sin Productos --
+    -- Sin Eventos --
   </option>`;
 
 const firestore = getFirestore();
 const daoRol = firestore.
   collection("Rol");
-const daoProducto = firestore.
-  collection("Producto");
+const daoEvento = firestore.
+  collection("Evento");
 const daoUsuario = firestore.
   collection("Usuario");
 
@@ -29,16 +29,16 @@ const daoUsuario = firestore.
     HTMLSelectElement} select
  * @param {string} valor */
 export function
-selectProductos(select,
+selectEventos(select,
     valor) {
   valor = valor || "";
-  daoProducto.
+  daoEvento.
     orderBy("nombre").
     onSnapshot(
       snap => {
-        let html = SIN_PRODUCTOS;
+        let html = SIN_EVENTOS;
         snap.forEach(doc =>
-          html += htmlProducto(
+          html += htmlEvento(
             doc, valor));
         select.innerHTML = html;
       },
@@ -56,7 +56,7 @@ selectProductos(select,
   DocumentSnapshot} doc
  * @param {string} valor */
 function
-htmlProducto(doc, valor) {
+htmlEvento(doc, valor) {
   const selected =
     doc.id === valor ?
       "selected" : "";
@@ -147,15 +147,15 @@ export async function
     id) {
   try {
     evt.preventDefault();
-    const productoId  =
+    const eventoId  =
       getForánea(formData,
-        "productoId ");
+        "eventoId ");
     const rolIds =
       formData.getAll("rolIds");
     await daoUsuario.
       doc(id).
       set({
-        productoId ,
+        eventoId ,
         rolIds
       });
     const avatar =

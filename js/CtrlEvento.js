@@ -13,9 +13,9 @@ import {
   tieneRol
 } from "./seguridad.js";
 
-const daoProducto =
+const daoEvento =
   getFirestore().
-    collection("Producto");
+    collection("Evento");
 const params =
   new URL(location.href).
     searchParams;

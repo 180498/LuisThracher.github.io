@@ -13,9 +13,9 @@ import {
 /** @type {HTMLUListElement} */
 const lista = document.
   querySelector("#lista");
-const daoProducto =
+const daoEvento =
   getFirestore().
-    collection("Producto");
+    collection("Evento");
 
 getAuth().
   onAuthStateChanged(
@@ -32,7 +32,7 @@ async function protege(usuario) {
 }
 
 function consulta() {
-  daoProducto.
+  daoEvento.
     orderBy("nombre")
     .onSnapshot(
       htmlLista, errConsulta);
@@ -50,7 +50,7 @@ function htmlLista(snap) {
   } else {
     html += /* html */
       `<li class="vacio">
-        -- No hay productos
+        -- No hay eventos
         registrados. --
       </li>`;
   }
@@ -64,9 +64,9 @@ function htmlLista(snap) {
 function htmlFila(doc) {
   /**
    * @type {import("./tipos.js").
-                  Producto} */
+                  Evento} */
   const data = doc.data();
-  const identificador = cod(data.identificador);
+  const codigoid = cod(data.codigoid);
   const nombre = cod(data.nombre);
   var fsf= cod(data.fecha);
   var fecha = new Date(fsf);

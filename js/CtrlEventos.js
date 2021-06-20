@@ -80,7 +80,7 @@ function htmlFila(doc) {
       <a class="fila" href=
   "evento.html?${parámetros}">
         <strong class="primario">
-          ${identificador} ${nombre} ${dformat}
+          ${codigoid} ${nombre} ${dformat}
         </strong>
       </a>
      

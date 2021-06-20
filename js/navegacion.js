@@ -6,5 +6,5 @@ muestraEventos() {
 
 export function
   muestraUsuarios() {
-  location.href = "usuarios.html";
+  location.href = "eventos.html";
 }
